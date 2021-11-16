@@ -1,0 +1,12 @@
+main{
+}
+
+.carousel {
+    margin: 10px 0;
+}
+
+.carousel-item{
+    max-height: 500px;
+}
+
+
