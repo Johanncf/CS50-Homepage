@@ -16,7 +16,7 @@
     <header>
       <div class="container">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <a class="navbar-brand" href="pset.html">Grow Root</a>
+            <a class="navbar-brand" href="index.html">Grow Root</a>
             <button class="navbar-toggler ml-auto" data-toggle="collapse"
                 data-target="#pages">
                 <span class="navbar-toggler-icon"></span>
@@ -36,38 +36,52 @@
     <main>
         <div class="container">
             <div class="card-deck" style="margin-top: 10px;">
-                <div class="card">
+                <div class="card" id="hps-light">
                   <img src="https://grownuphydroponics.com/media/catalog/product/cache/1/image/1000x/9df78eab33525d08d6e5fb8d27136e95/s/u/sunmaster_super_hps_deluxe_lamps.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">HPS Lamp</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-price">$<span id="cost">300.00</span></h5>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <button type="button" class="btn btn-outline-success" onclick="bag()">Add to bag</button>
+                    <button type="button" class="btn btn-outline-success" onclick="bag('hps-light')">Add to bag</button>
                   </div>
                 </div>
-                <div class="card">
+                <div class="card" id="purple-light">
                   <img src="https://wyzmgrow.com/265-thickbox_default/led-grow-light1500w-hps-replacementfull-spectrum-indoor-grow-lampspecial-design-for-indoor-growing-herbs-and-plants-150x10w.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">Purple Light Panel</h5>
                     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <h5 class="card-price">$<span id="cost">500.00</span></h5>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <button type="button" class="btn btn-outline-success" onclick="bag()">Add to bag</button>
+                    <button type="button" class="btn btn-outline-success" onclick="bag('purple-light')">Add to bag</button>
                   </div>
                 </div>
-                <div class="card">
+                <div class="card" id="q-light">
                   <img src="https://images.ua.prom.st/1662003802_w640_h640_quantum-board-samsung.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">Quantum Board</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <h5 class="card-price">$<span id="cost">800.00</span></h5>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <button type="button" class="btn btn-outline-success" onclick="bag()">Add to bag</button>
+                    <button type="button" class="btn btn-outline-success" onclick="bag('q-light')">Add to bag</button>
                   </div>
                 </div>
               </div>
         </div>
     </main>
-    <footer>
-        &copy; Grow Root - All rights reserved
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="col-md-4 mb-0 text-muted">
+        © 2021 Grow Root
+      </p><br>
+
+  
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+      </ul>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

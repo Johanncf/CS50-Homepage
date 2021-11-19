@@ -9,36 +9,79 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        main {
+            min-height: 500px;
+        }
+
+        .product{
+            display: flex;
+            column-gap: 3%;
+        }
+
+        .product img{
+            width: 10%;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <a class="navbar-brand" href="pset.html">Grow Root</a>
-                <button class="navbar-toggler ml-auto" data-toggle="collapse"
-                    data-target="#pages">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="pages">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="grow.html">Growboxes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="vent.html">Vents</a></li>
-                        <li class="nav-item"><a class="nav-link" href="light.html">Light</a></li>
-                        <li class="nav-item"><a class="nav-link" href="shop.html"><i class="fas fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-            </nav>
-    </header>   
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Grow Root</a>
+            <button class="navbar-toggler ml-auto" data-toggle="collapse" data-target="#pages">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pages">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="grow.html">Growboxes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="vent.html">Vents</a></li>
+                    <li class="nav-item"><a class="nav-link" href="light.html">Light</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html"><i class="fas fa-shopping-cart"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <main>
         <div class="container">
-            <div id="bag">
+            <table class="table">
+                <thead class="table-light">
+                    <tr>
+                        <td>Product</td>
+                        <td>Cost</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td id="total"></td>
+                    </tr>
+                </tfoot>
+            </table>
 
-            </div>
+            <button type="button" class="btn btn-danger" onclick="clearBag()">Clear Bag</button>
         </div>
     </main>
-    <footer>
-        &copy; Grow Root - All rights reserved
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">
+            © 2021 Grow Root
+        </p><br>
+
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -49,7 +92,42 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script>
+        const tbody = document.querySelector("tbody")
+        const tTotal = document.querySelector("#total")
+        var shop = []
+
+        let storageList = JSON.parse(localStorage.getItem("bag"))
+
+        if (storageList != null) {
+            shop = storageList
+        }
+
+        var total = 0
+        shop.forEach(product => {
+            total += parseFloat(product.cost)
+            let productInfos = `<div class="product">
+                                    <img src="${product.img}">
+                                    <p>${product.name}</p>
+                                </div>`
+            let cost = product.cost
+            let newShop = document.createElement("tr")
+            newShop.innerHTML =  `<td>${productInfos}</td>
+                                  <td><nobr>$ ${cost}</nobr></td>`
+            tbody.appendChild(newShop)
+        })  
+
+        tTotal.innerHTML = "<nobr>$ "+ total.toFixed(2) + "<nobr>"
+
+        function clearBag(){
+            if(confirm("Are you sure you want to clear the bag?")){
+                shop = []
+                localStorage.setItem("bag", JSON.stringify(shop))
+            }
+            location.reload()
+        }
+
+    </script>
 </body>
 
 </html>
