@@ -1,0 +1,13 @@
+main {
+    min-height: 500px;
+}
+
+.product{
+    display: flex;
+    column-gap: 3%;
+}
+
+.product img{
+    width: 10%;
+    height: 10%;
+}

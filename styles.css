@@ -3,11 +3,11 @@
     margin: 10px 0;
 }
 
-.carousel-item{
+.carousel-item {
     max-height: 500px;
 }
 
-.card-price{
+.card-price {
     color: limegreen;
     font-size: x-large;
 }
